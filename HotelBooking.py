@@ -40,7 +40,7 @@ else:
     
 totalCost = int(((singleRoom * 47) + (doubleRoom * 90) + (familyRoom * 250)) * priceMultiplier * lengthOfStay)
 
-Vat = int(totalCost * 0.2)
+vat = int(totalCost * 0.2)
 finalTotalCost = int(totalCost * 1.2)
 
 if priceMultiplier == 0.9:
@@ -52,7 +52,7 @@ def printReceipt():
     print(f"You have requested {singleRoom} Single room(s)")
     print(f"You have requested {doubleRoom} Double room(s)")
     print(f"You have requested {familyRoom} Family room(s)")
-    print(f"The total price will be {totalCost} plus £{Vat} VAT to give a grand total of £{finalTotalCost} ")
+    print(f"The total price will be {totalCost} plus £{vat} VAT to give a grand total of £{finalTotalCost} ")
     print(f"You will arrive on {date} ")
     
 if priceMultiplier > 0:  
