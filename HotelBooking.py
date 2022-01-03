@@ -1,28 +1,47 @@
 surname = input("What is your surname?")
-singleRoom = int(input("How many single rooms would you like to book?"))
-doubleRoom = int(input("How many double rooms would you like to book?"))
-familyRoom = int(input("How many family rooms would you like to book?"))
-lengthOfStay = int(input("How many days would you like to stay?"))
+singleRoom = input("How many single rooms would you like to book?")
+doubleRoom = input("How many double rooms would you like to book?")
+familyRoom = input("How many family rooms would you like to book?")
+lengthOfStay = input("How many days would you like to stay?")
 date = input("Please enter your arrival date: ")
+
+try:
+    singleRoom = int(singleRoom)
+    doubleRoom = int(doubleRoom)
+    familyRoom = int(familyRoom)
+    lengthOfStay = int(lengthOfStay)
+except ValueError:
+        print("***Invalid Data Input***")
+        print("Please enter whole numbers for the number of rooms and the length of your stay")
+        sys.exit()
 
 priceMultiplier = 0
 
 numberOfRooms = singleRoom + doubleRoom + familyRoom
 
-if numberOfRooms > 4:
-    print("We only have a maximum of 4 rooms available")
-elif numberOfRooms < 1:
-    print("You haven't requested any rooms")
-elif numberOfRooms >= 3 and lengthOfStay >= 7 and lengthOfStay <= 14:
+validRoom = False
+validStay = False
+if numberOfRooms >= 1 and numberOfRooms <= 4:
+    validRoom = True
+
+if lengthOfStay >= 1 and lengthOfStay <= 14:
+    validStay = True
+
+if validRoom == False:
+    print("You must select from 1 to 4 rooms total to book")
+elif validStay == False:
+    print("We only accept booking of up to 14 days in length")
+elif numberOfRooms >= 3 and lengthOfStay >= 7 and validRoom == True and validStay == True:
     priceMultiplier = 0.9
-elif numberOfRooms <= 4 and numberOfRooms > 0 and lengthOfStay > 0 and lengthOfStay <= 14:
+elif validRoom == True and validStay == True:
     priceMultiplier = 1.0
 else:
     print("We only accept stays of between 1 and 14 days")
-
-   
     
-totalCost = ((singleRoom * 47) + (doubleRoom * 90) + (familyRoom * 250)) * priceMultiplier * lengthOfStay
+totalCost = int(((singleRoom * 47) + (doubleRoom * 90) + (familyRoom * 250)) * priceMultiplier * lengthOfStay)
+
+Vat = int(totalCost * 0.2)
+finalTotalCost = int(totalCost * 1.2)
 
 if priceMultiplier == 0.9:
     print("You qualified for a discount of 10%")
@@ -33,7 +52,7 @@ def printReceipt():
     print(f"You have requested {singleRoom} Single room(s)")
     print(f"You have requested {doubleRoom} Double room(s)")
     print(f"You have requested {familyRoom} Family room(s)")
-    print(f"The total price will be {totalCost} ")
+    print(f"The total price will be {totalCost} plus £{Vat} VAT to give a grand total of £{finalTotalCost} ")
     print(f"You will arrive on {date} ")
     
 if priceMultiplier > 0:  
