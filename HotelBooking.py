@@ -52,7 +52,7 @@ def printReceipt():
     print(f"You have requested {singleRoom} Single room(s)")
     print(f"You have requested {doubleRoom} Double room(s)")
     print(f"You have requested {familyRoom} Family room(s)")
-    print(f"The total price will be {totalCost} plus £{vat} VAT to give a grand total of £{finalTotalCost} ")
+    print(f"The total price will be £{totalCost} plus £{vat} VAT to give a grand total of £{finalTotalCost} ")
     print(f"You will arrive on {date} ")
     
 if priceMultiplier > 0:  
