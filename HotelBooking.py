@@ -38,10 +38,13 @@ elif validRoom == True and validStay == True:
 else:
     print("We only accept stays of between 1 and 14 days")
     
-totalCost = int(((singleRoom * 47) + (doubleRoom * 90) + (familyRoom * 250)) * priceMultiplier * lengthOfStay)
+totalCost = (((singleRoom * 47) + (doubleRoom * 90) + (familyRoom * 250)) * priceMultiplier * lengthOfStay)
 
-vat = int(totalCost * 0.2)
-finalTotalCost = int(totalCost * 1.2)
+vat = (totalCost * 0.2)
+finalTotalCost = "£{:,.2f}".format(totalCost + vat)
+
+vat = "£{:,.2f}".format(vat)
+totalCost = "£{:,.2f}".format(totalCost)
 
 if priceMultiplier == 0.9:
     print("You qualified for a discount of 10%")
@@ -52,7 +55,7 @@ def printReceipt():
     print(f"You have requested {singleRoom} Single room(s)")
     print(f"You have requested {doubleRoom} Double room(s)")
     print(f"You have requested {familyRoom} Family room(s)")
-    print(f"The total price will be £{totalCost} plus £{vat} VAT to give a grand total of £{finalTotalCost} ")
+    print(f"The total price will be {totalCost} plus {vat} VAT to give a grand total of {finalTotalCost} ")
     print(f"You will arrive on {date} ")
     
 if priceMultiplier > 0:  
