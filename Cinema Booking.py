@@ -1,4 +1,4 @@
-tickets = int(input("How many tickets for your family do you require?"))
+tickets = input("How many tickets for your family do you require?")
 print("Please enter the ages for each ticket")
 
 def checkTicketNumbers(tickets):
@@ -20,8 +20,11 @@ ages = []
 
 i = 1
 while i <= ticketsValidated:
-    ages.append(int(input(f"What age is the family member for ticket {i}: ")))
-    i+=1
+    try:
+        ages.append(int(input(f"What age is the family member for ticket {i}: ")))
+        i+=1
+    except ValueError:
+        ticketsValidated = 0
 
 def ageVerification(ages):
     noBabies = True
@@ -29,6 +32,7 @@ def ageVerification(ages):
     for x in ages:
         if x < 2:
             noBabies = False
+            print("Babies are not permitted and so your order cannot be processed")
             break
         if x > 19:
             accompanyingAdults = True
@@ -42,8 +46,8 @@ ageValid = ageVerification(ages)
         
 
 def priceCalc(ages):
-    if ageValid != True:
-        return 
+    if ageValid == False:
+        return [0,0,0,0]
     Adults = 0
     Teenagers = 0
     Children = 0
@@ -63,9 +67,20 @@ def priceCalc(ages):
 infoArray = priceCalc(ages)
 totalCost = "£{:,.2f}".format(infoArray[3])
 
-print("Thank You")
-print("TICKET PRICE DETAILS are as follows:")
-print(f"Number of Adults = {infoArray[0]} at £14.50 each")
-print(f"Number of Teenagers = {infoArray[1]} at £10.00 each")
-print(f"Number of Childrens = {infoArray[2]} at £5.00 each")
-print(f"The total cost of these tickets are {totalCost}")
+def printOut():
+    if ticketsValidated == 0:
+        print("Sorry, the order could not be processed as the input was invalid")
+        return
+    elif ageValid != True:
+        print("Sorry, as there is no accompanying adult your order could not be processed")
+        return
+    else:
+        print("Thank You")
+        print("TICKET PRICE DETAILS are as follows:")
+        print(f"Number of Adults = {infoArray[0]} at £14.50 each")
+        print(f"Number of Teenagers = {infoArray[1]} at £10.00 each")
+        print(f"Number of Childrens = {infoArray[2]} at £5.00 each")
+        print(f"The total cost of these tickets are {totalCost}")
+        return
+
+printOut()
