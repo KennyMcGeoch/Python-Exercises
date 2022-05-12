@@ -32,7 +32,6 @@ def ageVerification(ages):
     for x in ages:
         if x < 2:
             noBabies = False
-            print("Babies are not permitted and so your order cannot be processed")
             break
         if x > 19:
             accompanyingAdults = True
@@ -72,7 +71,7 @@ def printOut():
         print("Sorry, the order could not be processed as the input was invalid")
         return
     elif ageValid != True:
-        print("Sorry, as there is no accompanying adult your order could not be processed")
+        print("Sorry, we cannot process orders that contain a baby or that don't have an accompanying adult so your order could not be processed")
         return
     else:
         print("Thank You")
