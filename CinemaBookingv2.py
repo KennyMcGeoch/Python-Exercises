@@ -33,8 +33,7 @@ def ageVerification(ages):
             errorMsgFunc("We cannot process you order as the party contains a child under the age of 2")
             return
         elif x > 19:
-            accompanyingAdults = True
-            
+            accompanyingAdults = True            
     if accompanyingAdults:
         priceCalc(ages)
         return
