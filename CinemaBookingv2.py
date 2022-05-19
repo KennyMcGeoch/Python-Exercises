@@ -22,8 +22,7 @@ def getInputs(tickets):
             i+=1
         except ValueError:
             errorMsgFunc("You have entered an invalid age. All ages must be a whole number")
-            return
-        
+            return    
     ageVerification(ages)
     return
 
