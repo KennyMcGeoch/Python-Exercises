@@ -14,11 +14,11 @@ def checkTicketNumbers(tickets):
             getInputs(tickets)
             return
 
-def getInputs(ticketsValidated):
+def getInputs(tickets):
     print("Please enter the ages for each ticket")
     i = 1
     ages = []
-    while i <= ticketsValidated:
+    while i <= tickets:
         try:
             ages.append(int(input(f"What age is the family member for ticket {i}: ")))
             i+=1
