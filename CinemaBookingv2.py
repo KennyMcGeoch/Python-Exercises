@@ -30,20 +30,16 @@ def getInputs(ticketsValidated):
     return
 
 def ageVerification(ages):
-    noBabies = True
     accompanyingAdults = False
     for x in ages:
         if x < 2:
-            noBabies = False
-            break
+            errorMsgFunc("We cannot process you order as the party contains a child under the age of 2")
+            return
         if x > 19:
             accompanyingAdults = True
             
-    if accompanyingAdults and noBabies:
+    if accompanyingAdults:
         priceCalc(ages)
-        return
-    elif noBabies == False:
-        errorMsgFunc("We cannot process you order as the party contains a child under the age of 2")
         return
     else:
         errorMsgFunc("We cannot process your order as the party has no accompanying adult")
