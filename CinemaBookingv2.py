@@ -1,5 +1,3 @@
-tickets = input("How many tickets for your family do you require? ")
-
 def checkTicketNumbers(tickets):
     try:
         tickets = int(tickets)
@@ -78,4 +76,5 @@ def errorMsgFunc(error):
     print("Your order has been cancelled. Please restart your order ensuring that all data entered is valid")
     return
 
+tickets = input("How many tickets for your family do you require? ")
 checkTicketNumbers(tickets)
