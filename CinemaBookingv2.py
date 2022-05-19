@@ -76,7 +76,7 @@ def getInputs(ticketsValidated):
             ages.append(int(input(f"What age is the family member for ticket {i}: ")))
             i+=1
         except ValueError:
-            errorMsgFunc("You have entered an invalid age. All ages must be whole number")
+            errorMsgFunc("You have entered an invalid age. All ages must be a whole number")
             return
         
     ageVerification(ages)
