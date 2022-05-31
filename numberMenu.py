@@ -23,16 +23,14 @@ def menu(fullName): # asks for menu option and runs relevant function or asks ag
         menu(fullName)
     return
 
-def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an integer. Then does comparison to see which is the biggest and loops while appending the value to the string. As it's a while loop and loop starts at value + 1 it means that for consecutive numbers it's an empty string so the length attribute can be used to catch that scenario. integersPresent variable is used to have a nicer output
+def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an integer. If the numbers are more than 1 apart it runs a comparison method. Otherwise it gives a custom response to justify that there are no numbers in between
     firstInt = input("Please enter the first integer: ")
     secondInt = input("Please enter the second integer: ")
-    numbersList = ""
-    integersPresent = False
     try:
         firstInt = int(firstInt)
         secondInt = int(secondInt)
     except ValueError:
-        print("Please enter valid integers")
+        print("You must enter valid integers. Please try again")
         optionOne()
         return
     
@@ -41,28 +39,14 @@ def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an inte
         optionOne()
         return
     
-    if firstInt > secondInt:
-        secondIntCounter = secondInt
-        secondIntCounter +=1
-        while secondIntCounter < firstInt:
-            numbersList = numbersList + " " + str(secondIntCounter)
-            secondIntCounter +=1
-            integersPresent = True
-    elif secondInt > firstInt:
-        firstIntCounter = firstInt
-        firstIntCounter +=1
-        while firstIntCounter < secondInt:
-            numbersList = numbersList + " " + str(firstIntCounter)
-            firstIntCounter +=1
-            integersPresent = True
+    if firstInt > secondInt + 1:
+        compareNumbers(firstInt, secondInt)
+    elif secondInt > firstInt + 1:
+        compareNumbers(secondInt, firstInt)
     elif firstInt == secondInt:
         print("There are no integers between the specified numbers as both numbers are the same.\n")
-    elif len(numbersList) == 0:
-        numbersList = "There are no integers between the specified numbers as numbers are consecutive.\n"
-    if integersPresent == True:
-        print(f"The list of numbers between {str(firstInt)} and {str(secondInt)} is as follows: {numbersList}\n")
     else:
-        print(f"{numbersList}\n")
+        print("There are no integers between the specified numbers as numbers are consecutive.\n")
     menu(getName)
     return
 
@@ -82,6 +66,16 @@ def optionTwo(): #asks for 5 integers and inserts them into an array with error 
     print(f"The numbers given were {numbers}. Of these the highest number is {sortedNumbers[4]} and the lowest number is {sortedNumbers[0]}\n")
     menu(getName)
     return
+
+def compareNumbers(firstInt, secondInt): # Loops from lowest number to highest number and appends it to a string and then prints output
+    numbersList = ""
+    immutableSecondInt = secondInt
+    secondInt +=1
+    while secondInt < firstInt:
+        numbersList = numbersList + " " + str(secondInt)
+        secondInt +=1
+    print(f"The list of numbers between {str(immutableSecondInt)} and {str(firstInt)} is as follows: {numbersList}\n")
+    return 
 
 getName = userName()
 menu(getName)
