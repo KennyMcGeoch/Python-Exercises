@@ -23,7 +23,7 @@ def menu(fullName): # asks for menu option and runs relevant function or asks ag
         menu(fullName)
     return
 
-def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an integer. The does comparison to see which is the biggest and loops while appending the value to the string. As it's a while loop and loop starts at value + 1 it means that for consecutive numbers it's an empty string so the length attribute can be used to catch that scenario. integersPresent variable is used to have a nicer output
+def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an integer. Then does comparison to see which is the biggest and loops while appending the value to the string. As it's a while loop and loop starts at value + 1 it means that for consecutive numbers it's an empty string so the length attribute can be used to catch that scenario. integersPresent variable is used to have a nicer output
     firstInt = input("Please enter the first integer: ")
     secondInt = input("Please enter the second integer: ")
     numbersList = ""
