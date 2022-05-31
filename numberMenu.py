@@ -32,13 +32,11 @@ def optionOne(): #asks for 2 integer inputs, validates it to ensure it's an inte
     except ValueError:
         print("You must enter valid integers. Please try again")
         optionOne()
-        return
-    
+        return    
     if firstInt < 1 or firstInt > 100 or secondInt < 1 or secondInt > 100:
         print("You have entered an integer outside of the 1 to 100 range. Please try again")
         optionOne()
-        return
-    
+        return    
     if firstInt > secondInt + 1:
         compareNumbers(firstInt, secondInt)
     elif secondInt > firstInt + 1:
